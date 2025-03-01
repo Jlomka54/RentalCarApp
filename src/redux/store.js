@@ -11,6 +11,7 @@ import {
   PURGE,
   REGISTER,
 } from 'redux-persist';
+import { carsReducer } from './cars/carsSlice';
 
 const carsPersistConfig = {
   key: 'cars',
@@ -18,17 +19,14 @@ const carsPersistConfig = {
   whitelist: ['items'],
 };
 
-const persistContactsReducer = persistReducer(
-  carsPersistConfig,
-  contactsReducer
-);
+const persistCarsReducer = persistReducer(carsPersistConfig, carsReducer);
 
 export const store = configureStore({
   reducer: {
-    contactsData: persistContactsReducer,
-    filter: filterReducer,
+    carsData: persistCarsReducer,
+    // filter: filterReducer,
   },
-  middleware: (getDefaultMiddleware) =>
+  middleware: getDefaultMiddleware =>
     getDefaultMiddleware({
       serializableCheck: {
         ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],

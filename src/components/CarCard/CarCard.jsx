@@ -1,13 +1,28 @@
-import React from 'react';
+import css from './CarCard.module.css';
 
-const CarCard = ({ id }) => {
+const CarCard = ({
+  id,
+  year,
+  brand,
+  model,
+  img,
+  rentalPrice,
+  rentalCompany,
+  address,
+  type,
+  mileage,
+}) => {
   return (
-    <li>
-      <img src="" alt="car" />
-      <h3></h3>
-      <p></p>
-      <p></p>
-      <button type="button"></button>
+    <li className={css.carInfo}>
+      <img src={img} alt={`${brand} ${model}`} />
+      <h3>
+        {brand} {model}, {year}
+      </h3>
+      <p>Country</p>
+      <p>
+        {type} | {mileage}
+      </p>
+      <button type="button">Read more</button>
     </li>
   );
 };

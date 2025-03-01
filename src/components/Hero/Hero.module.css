@@ -4,6 +4,7 @@
   font-size: 60px;
   line-height: 1.2;
   text-align: center;
+  color: #fff;
 }
 .heroInfo {
   margin: 0 auto;
@@ -12,6 +13,7 @@
   justify-content: center;
   flex-direction: column;
   gap: 0px;
+  color: #fff;
 }
 .p {
   font-weight: 600;
@@ -26,4 +28,5 @@
   margin-top: 40px;
   padding: 12px 88px;
   background-color: #3470ff;
+  color: #fff;
 }

@@ -11,7 +11,7 @@
 }
 
 .active {
-  color: #0b44cd;
+  color: inherit;
 }
 
 .active:hover {
