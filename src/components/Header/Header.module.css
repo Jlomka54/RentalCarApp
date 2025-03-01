@@ -1,0 +1,19 @@
+.link {
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.25;
+  text-align: center;
+  cursor: pointer;
+  padding: 24px 0;
+}
+.link:nth-child(1) {
+  margin-right: 32px;
+}
+
+.active {
+  color: #0b44cd;
+}
+
+.active:hover {
+  color: #0b44cd;
+}

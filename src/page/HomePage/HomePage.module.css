@@ -1,0 +1,6 @@
+.hero {
+  background-image: url('/src/assets/images/hero/car-desctop.png');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}

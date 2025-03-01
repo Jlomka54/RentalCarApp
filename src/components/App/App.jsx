@@ -1,16 +1,20 @@
-import { Route, Routes } from 'react-router-dom';
 import './App.css';
-import Navigation from '../Navigation/Navigation';
+import { Route, Routes } from 'react-router-dom';
+
+import Container from '../ui/Container/Container';
+import HeaderPage from '../../page/HeaderPage/HeaderPage';
 import HomePage from '../../page/HomePage/HomePage';
 import CatalogPage from '../../page/CatalogPage/CatalogPage';
 import CarDetailsPage from '../../page/CatDetailsPage/CarDetailsPage';
+import NotFoundPage from '../../page/NotFoundPage/NotFoundPage';
 import { Suspense } from 'react';
-import NotFoundPage from '../NotFoundPage/NotFoundPage';
 
 function App() {
   return (
     <>
-      <Navigation />
+      <Container>
+        <HeaderPage />
+      </Container>
       <Suspense fallback={<div>Loading...</div>}>
         <Routes>
           <Route path="/" element={<HomePage />} />
