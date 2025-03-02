@@ -1,10 +1,14 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { apiGetCars } from './operation';
+import { apiGetCars, apiGetCarsById } from './operation';
 
 const INITIAL_STATE = {
-  items: null,
+  items: [],
+  selectedCar: null,
   loading: false,
   error: null,
+  totalCars: 0,
+  totalPages: 0,
+  currentPage: 1,
 };
 
 const carsSlice = createSlice({
@@ -18,12 +22,26 @@ const carsSlice = createSlice({
         state.error = null;
       })
       .addCase(apiGetCars.fulfilled, (state, action) => {
-        console.log('Action dispatched, state before update:', state);
-        console.log('Action payload:', action.payload);
         state.loading = false;
-        state.items = action.payload;
+        state.items = [...state.items, ...action.payload.cars];
+
+        state.totalCars = action.payload.totalCars;
+        state.totalPages = action.payload.totalPages;
+        state.currentPage = action.payload.page;
       })
       .addCase(apiGetCars.rejected, (state, action) => {
+        state.loading = false;
+        state.error = action.payload;
+      })
+      .addCase(apiGetCarsById.pending, state => {
+        state.loading = true;
+        state.error = null;
+      })
+      .addCase(apiGetCarsById.fulfilled, (state, action) => {
+        state.loading = false;
+        state.selectedCar = action.payload;
+      })
+      .addCase(apiGetCarsById.rejected, (state, action) => {
         state.loading = false;
         state.error = action.payload;
       }),

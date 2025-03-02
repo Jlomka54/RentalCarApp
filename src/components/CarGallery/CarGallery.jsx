@@ -1,63 +1,90 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { selectCarsData, selectCarsLoading } from '../../redux/cars/selectors';
+import {
+  selectCarsData,
+  selectCarsLoading,
+  selectTotalCars,
+} from '../../redux/cars/selectors';
 import { apiGetCars } from '../../redux/cars/operation';
-import CarCard from '../../components/CarCard/CarCard';
 
-import css from './CarGallerry.module.css';
+import css from './CarGallery.module.css';
+import CarCard from '../../components/CarCard/CarCard';
+import LoadMoreBtn from '../LoadMoreBtn/LoadMoreBtn';
 
 const CarGallery = () => {
   const dispatch = useDispatch();
   const carList = useSelector(selectCarsData);
   const loading = useSelector(selectCarsLoading);
+  const totalCars = useSelector(selectTotalCars);
+
+  const [page, setPage] = useState(1);
+  const handleLoadMoreCar = () => {
+    setPage(page + 1);
+  };
 
   useEffect(() => {
     const fetchData = async () => {
-      await dispatch(apiGetCars());
+      await dispatch(apiGetCars(page));
     };
 
     fetchData();
-  }, [dispatch]);
+  }, [dispatch, page]);
 
-  console.log('Car List:', carList);
+  useEffect(() => {
+    const scrollToMiddle = () => {
+      window.scrollTo({
+        top: window.scrollY + window.innerHeight / 2,
+        behavior: 'smooth',
+      });
+    };
+
+    if (!loading && carList) {
+      scrollToMiddle();
+    }
+  }, [carList, loading]);
 
   if (loading) {
     return <p>Loading...</p>;
   }
 
   return (
-    <ul className={css.card}>
-      {carList &&
-        carList.cars &&
-        carList.cars.map(
-          ({
-            id,
-            year,
-            brand,
-            model,
-            img,
-            rentalPrice,
-            rentalCompany,
-            address,
-            type,
-            mileage,
-          }) => (
-            <CarCard
-              key={id}
-              img={img}
-              brand={brand}
-              model={model}
-              rentalPrice={rentalPrice}
-              id={id}
-              year={year}
-              rentalCompany={rentalCompany}
-              address={address}
-              type={type}
-              mileage={mileage}
-            />
-          )
-        )}
-    </ul>
+    <>
+      <ul className={css.card}>
+        {carList &&
+          carList.cars &&
+          carList.cars.map(
+            ({
+              id,
+              year,
+              brand,
+              model,
+              img,
+              rentalPrice,
+              rentalCompany,
+              address,
+              type,
+              mileage,
+            }) => (
+              <CarCard
+                key={id}
+                img={img}
+                brand={brand}
+                model={model}
+                rentalPrice={rentalPrice}
+                id={id}
+                year={year}
+                rentalCompany={rentalCompany}
+                address={address}
+                type={type}
+                mileage={mileage}
+              />
+            )
+          )}
+      </ul>
+      {carList.cars.length < totalCars && (
+        <LoadMoreBtn loadMoreCar={handleLoadMoreCar} />
+      )}
+    </>
   );
 };
 

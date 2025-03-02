@@ -28,5 +28,9 @@
   margin-top: 40px;
   padding: 12px 88px;
   background-color: #3470ff;
+  transition: background-color 250ms ease-in-out;
   color: #fff;
+}
+.catalogLink:hover {
+  background-color: #0b44cd;
 }

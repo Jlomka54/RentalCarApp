@@ -2,4 +2,43 @@
   width: 276px;
   display: flex;
   flex-direction: column;
+  height: 424px;
+}
+.image {
+  border-radius: 14px;
+  margin-bottom: 16px;
+}
+.model {
+  color: #3470ff;
+}
+.namePrice {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 8px;
+}
+.carName {
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.25;
+  color: #101828;
+}
+
+.someDescription {
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 1.33333;
+  color: #8d929a;
+  margin-bottom: 28px;
+}
+.moreInfo {
+  text-align: center;
+  border-radius: 12px;
+  padding: 12px 50px;
+  background-color: #3470ff;
+  color: #fff;
+  font-weight: 600;
+  transition: background-color 250ms ease-in-out;
+}
+.moreInfo:hover {
+  background-color: #0b44cd;
 }

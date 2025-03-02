@@ -6,3 +6,18 @@ export const api = axios.create({
     'Content-Type': 'application/json',
   },
 });
+export const getCars = async page => {
+  const axiosSearchParams = {
+    params: {
+      page: page,
+      limit: '8',
+    },
+  };
+  const { data } = await api.get('/cars', axiosSearchParams);
+  return data;
+};
+
+export const getCarsById = async id => {
+  const { data } = await api.get(`/cars/${id}`);
+  return data;
+};
