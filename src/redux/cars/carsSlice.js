@@ -2,13 +2,13 @@ import { createSlice } from '@reduxjs/toolkit';
 import { apiGetCars, apiGetCarsById } from './operation';
 
 const INITIAL_STATE = {
-  items: [],
-  selectedCar: null,
-  loading: false,
-  error: null,
+  cars: null,
   totalCars: 0,
   totalPages: 0,
   currentPage: 1,
+  selectedCar: null,
+  loading: false,
+  error: null,
 };
 
 const carsSlice = createSlice({
@@ -22,9 +22,9 @@ const carsSlice = createSlice({
         state.error = null;
       })
       .addCase(apiGetCars.fulfilled, (state, action) => {
+        console.log('🚀 ~ .addCase ~ action:', action);
         state.loading = false;
-        state.items = [...state.items, ...action.payload.cars];
-
+        state.cars = action.payload.cars;
         state.totalCars = action.payload.totalCars;
         state.totalPages = action.payload.totalPages;
         state.currentPage = action.payload.page;

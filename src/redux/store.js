@@ -16,7 +16,7 @@ import { carsReducer } from './cars/carsSlice';
 const carsPersistConfig = {
   key: 'cars',
   storage,
-  whitelist: ['items'],
+  whitelist: ['carsData'],
 };
 
 const persistCarsReducer = persistReducer(carsPersistConfig, carsReducer);

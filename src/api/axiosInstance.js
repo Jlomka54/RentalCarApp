@@ -14,6 +14,7 @@ export const getCars = async page => {
     },
   };
   const { data } = await api.get('/cars', axiosSearchParams);
+
   return data;
 };
 
