@@ -1,3 +1,5 @@
+import * as Yup from 'yup';
+
 export const BookDateSchema = Yup.object({
   name: Yup.string()
     .min(2, 'Name must be at least 2 characters')
@@ -6,5 +8,5 @@ export const BookDateSchema = Yup.object({
   email: Yup.string()
     .email('Invalid email address')
     .required('Email is required'),
-  bookDate: Yup.string().required('Password is required'),
+  bookDate: Yup.string().required('Booking date is required'),
 });

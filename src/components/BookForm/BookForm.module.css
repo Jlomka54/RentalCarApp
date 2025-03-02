@@ -1,0 +1,52 @@
+.formName {
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 1.2;
+  color: #101828;
+  margin-bottom: 8px;
+}
+.formDesc {
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.25;
+  color: #8d929a;
+  margin-bottom: 24px;
+}
+.form {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  justify-content: center;
+  top: 632px;
+  left: 120px;
+  padding: 32px;
+  gap: 16px;
+}
+
+.input {
+  border-radius: 12px;
+  border: none;
+  padding: 12px 20px;
+  width: 576px;
+  background-color: #f7f7f7;
+}
+
+.errorMess {
+  color: red;
+}
+
+.button {
+  border-radius: 12px;
+  padding: 12px 51px;
+  width: 156px;
+  height: 44px;
+  margin: 0 auto;
+  color: #fff;
+  border: none;
+  background-color: #3470ff;
+  transition: background-color 250ms ease-in-out;
+}
+.button:hover {
+  background-color: #0b44cd;
+}

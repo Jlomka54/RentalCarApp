@@ -22,7 +22,6 @@ const carsSlice = createSlice({
         state.error = null;
       })
       .addCase(apiGetCars.fulfilled, (state, action) => {
-        console.log('🚀 ~ .addCase ~ action:', action);
         state.loading = false;
         state.cars = action.payload.cars;
         state.totalCars = action.payload.totalCars;

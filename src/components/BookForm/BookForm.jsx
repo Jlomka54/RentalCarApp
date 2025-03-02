@@ -1,8 +1,9 @@
-import { ErrorMessage, Field, Formik } from 'formik';
+import { ErrorMessage, Field, Form, Formik } from 'formik';
 import React from 'react';
-import { Form } from 'react-router-dom';
 import css from './BookForm.module.css';
 import { BookDateSchema } from '../../utils/formSchemas';
+import 'react-toastify/dist/ReactToastify.css';
+import { ToastContainer, toast } from 'react-toastify';
 
 const BookForm = () => {
   const INITAL_VALUE = {
@@ -12,38 +13,77 @@ const BookForm = () => {
     comment: '',
   };
 
-  const dispatch = useDispatch();
-
   const handleSubmit = (values, actions) => {
-    // dispatch(login(values));
-    console.log('You rented a car');
+    toast.success('You rented a car');
 
-    // actions.resetForm();
+    actions.resetForm();
   };
 
   return (
-    <Formik
-      initialValues={INITAL_VALUE}
-      onSubmit={handleSubmit}
-      validationSchema={BookDateSchema}
-    >
-      <Form className={css.form}>
-        <span>Email:</span>
-        <Field className={css.input} type="text" name="email"></Field>
-        <ErrorMessage className={css.errorMess} name="email" component="span" />
-        <span>Password:</span>
-        <Field className={css.input} type="password" name="password"></Field>
-        <ErrorMessage
-          className={css.errorMess}
-          name="password"
-          component="span"
-        />
+    <>
+      <ToastContainer />;
+      <Formik
+        initialValues={INITAL_VALUE}
+        onSubmit={handleSubmit}
+        validationSchema={BookDateSchema}
+      >
+        <Form className={css.form}>
+          <p className={css.formName}>Book your car now</p>
+          <p className={css.formDesc}>
+            Stay connected! We are always ready to help you.
+          </p>
+          <Field
+            className={css.input}
+            type="text"
+            name="name"
+            placeholder="Name*"
+          />
+          <ErrorMessage
+            className={css.errorMess}
+            name="name"
+            component="span"
+          />
 
-        <button className={css.button} type="submit">
-          Send
-        </button>
-      </Form>
-    </Formik>
+          <Field
+            className={css.input}
+            type="email"
+            name="email"
+            placeholder="Email*"
+          />
+          <ErrorMessage
+            className={css.errorMess}
+            name="email"
+            component="span"
+          />
+          <Field
+            className={css.input}
+            type="text"
+            name="bookDate"
+            placeholder="Booking date"
+          />
+          <ErrorMessage
+            className={css.errorMess}
+            name="bookDate"
+            component="span"
+          />
+          <Field
+            className={css.input}
+            type="text"
+            name="comment"
+            placeholder="Comment"
+          />
+          <ErrorMessage
+            className={css.errorMess}
+            name="comment"
+            component="span"
+          />
+
+          <button className={css.button} type="submit">
+            Send
+          </button>
+        </Form>
+      </Formik>
+    </>
   );
 };
 
