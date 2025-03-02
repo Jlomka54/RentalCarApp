@@ -6,3 +6,9 @@
   column-gap: 48px;
   margin-bottom: 80px;
 }
+
+.card > li {
+  width: calc(25% - 36px);
+
+  box-sizing: border-box;
+}

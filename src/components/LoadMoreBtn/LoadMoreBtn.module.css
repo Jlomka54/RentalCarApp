@@ -7,6 +7,7 @@
   padding: 12px 51px;
   margin: 0 auto;
   transition: border-color 1000ms ease-in-out;
+  margin-bottom: 120px;
 }
 .button:hover {
   border-color: #0b44cd;

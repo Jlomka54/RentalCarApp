@@ -6,7 +6,7 @@ const Logo = () => {
   return (
     <Link className={css.logo} to={'/'}>
       <p className={css.logoText}>
-        Rental<span>Car</span>
+        Rental<span className={css.logoCar}>Car</span>
       </p>
     </Link>
   );
